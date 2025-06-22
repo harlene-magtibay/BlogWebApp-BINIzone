@@ -1,9 +1,10 @@
 <%- include("partials/header.ejs") %>
+
 <body class="compose-body">
     <div class="compose-container">
   
         <!-- Step 1: Category & Title -->
-        <div class="form-wrapper d-flex flex-column justify-content-center align-items-center" id="form1">
+        <div class="hidden form-wrapper d-flex flex-column justify-content-center align-items-center" id="form1">
             <h2 class="new-post mb-5">Create New Post</h2>
             <label class="mb-1" for="category">BLOG POST CATEGORY:</label>
             <select id="category" required>
@@ -35,21 +36,49 @@
       
         <!-- Step 2: Rich Text Editor -->
         <div id="form2" class="hidden">
-          <h2>Write Your Post</h2>
-          <form id="uploadForm" action="/upload" method="POST">
+          <h2 class="mb-4" style="text-align: center;">Write Your Post</h2>
+          <h4 id="postTitle"></h4>
+          <form id="uploadForm" action="/submit" method="POST">
             <input type="hidden" name="category" id="finalCategory">
             <input type="hidden" name="title" id="finalTitle">
             <input type="hidden" name="content" id="content">
       
             <div id="editor" style="height: 300px;"></div>
-            <button type="button" onclick="submitPost()">Upload</button>
+            <div class="d-flex justify-content-center">
+                <button data-toggle="modal" data-target=".bd-example-modal-sm" class="upload-btn" type="button" onclick="submitPost()">Upload</button>
+            </div>
           </form>
         </div>
+
+        <div class="hidden postSuccess flex-column align-items-center" id="postSuccess">
+            <h3 style="text-align: center; color: #2b1b33; font-weight: bold;">Post Successfuly Uploaded!</h3>
+            <a style="color: #000000; text-decoration: none;" href="/"><button id="okay" type="button">Okay</button></a>
+        </div>
       
+        <!-- <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                <h4>Post Succussfuly uploaded</h4>
+                <a style="color: #000000; text-decoration: none; background-color: aqua;" href="/"><button id="okay" type="button">Okay</button></a>
+              </div>
+            </div>
+        </div> -->
+
     </div>
 </body>
 
-
+<% if (typeof showSuccess !== "undefined" && showSuccess) { %>
+    <script>
+        document.getElementById('form1').classList.add('hidden');
+        document.getElementById('form1').classList.remove('d-flex');
+      document.addEventListener("DOMContentLoaded", function () {
+        
+        const successDiv = document.getElementById("postSuccess");
+        successDiv.classList.remove("hidden");
+        successDiv.classList.add("d-flex");
+      });
+    </script>
+<% } %>
   
 <!-- Scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -61,7 +90,7 @@
     modules: {
         toolbar: [
         ['bold', 'italic', 'underline'],
-        ['link', 'image', 'video']
+        ['image', 'video']
         ]
     }
     });
@@ -95,6 +124,7 @@
 
         document.getElementById('finalCategory').value = category;
         document.getElementById('finalTitle').value = title;
+        $("#postTitle").text(title);
 
         document.getElementById('form1').classList.add('hidden');
         document.getElementById('form1').classList.remove('d-flex');
@@ -104,6 +134,8 @@
     function submitPost() {
         const contentInput = document.getElementById('content');
         contentInput.value = quill.root.innerHTML;
+        document.getElementById('form2').classList.add('hidden');
+        
         document.getElementById('uploadForm').submit();
     }
 </script>

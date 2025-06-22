@@ -114,7 +114,7 @@ font-style: normal;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 60px); /* adjust based on navbar height */
+    min-height: calc(100vh - 60px); 
     padding: 2rem 1rem;
     box-sizing: border-box;
 }
@@ -124,6 +124,15 @@ font-style: normal;
     border: 3px solid #2b1b33;
     border-radius: 15px;
     padding: 60px 30px;
+    width: 100%;
+}
+
+#form2 {
+    background-color: #e8fffdef ;
+    border: 3px solid #2b1b33;
+    border-radius: 15px;
+    padding: 40px 30px;
+    padding-top: 40px;
     width: 100%;
 }
 
@@ -196,3 +205,45 @@ font-style: normal;
     color: #ffff;
 }
 
+#finalCategory {
+    color: #2b1b33;
+}
+
+.upload-btn {
+    width: 125px;
+    height: 40px;
+    padding: 5px 35px;
+    border-radius: 8px;
+    border: none;
+    background-color: #ac6cff;
+    color: #ffff;
+    font-weight: bold;
+    margin-top: 35px;
+}
+
+.upload-btn:hover {
+    background-color: #ff5c82;
+    color: #ffff;
+}
+
+.postSuccess {
+    width: 50%;
+    background-color: #e132e4;
+    padding: 50px 30px;
+    padding-bottom: 30px;
+    border-radius: 10px;
+    border: 3px solid #2b1b33;
+}
+
+#okay {
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 5px 20px;
+    background-color: #4bfff6;
+    border: none;
+    font-weight: bold;
+}
+
+#okay:hover {
+    background-color: #faff5b;
+}
