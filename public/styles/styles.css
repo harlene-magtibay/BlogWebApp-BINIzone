@@ -132,7 +132,7 @@ font-style: normal;
     border: 3px solid #2b1b33;
     border-radius: 15px;
     padding: 40px 30px;
-    padding-top: 40px;
+    padding-top: 30px;
     width: 100%;
 }
 
@@ -196,7 +196,7 @@ font-style: normal;
 }
 
 #next:hover {
-    background-color: #b388eb;
+    background-color: #892fff;
     color: #ffff;
 }
 
@@ -221,14 +221,31 @@ font-style: normal;
     margin-top: 35px;
 }
 
-.upload-btn:hover {
+.back-btn {
+    width: 125px;
+    height: 40px;
+    padding: 5px 35px;
+    border-radius: 8px;
+    border: none;
     background-color: #ff5c82;
     color: #ffff;
+    font-weight: bold;
+    margin-top: 35px;
+}
+
+.upload-btn:hover {
+    background-color: #00e3ef;
+    color: #2b1b33;
+}
+
+.back-btn:hover {
+    background-color: #00e3ef;
+    color: #2b1b33;
 }
 
 .postSuccess {
     width: 50%;
-    background-color: #e132e4;
+    background-color: #ed51f0eb;
     padding: 50px 30px;
     padding-bottom: 30px;
     border-radius: 10px;
