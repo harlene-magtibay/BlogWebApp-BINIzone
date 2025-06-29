@@ -1,6 +1,6 @@
 <%- include("partials/header.ejs") %>
 
-<div class="d-flex justify-content-center mb-2">
+<div id="home" class="d-flex justify-content-center mb-2">
     <img src="images/BINIzone.jpg" alt="Bini Zone" style= "width: 30%;">
 </div>
 
@@ -8,13 +8,110 @@
     <div class="col-lg-4 col-md-12 welcome">
         <h3 class="mb-0 mt-4" style="color: #4ddde0; font-weight: bold;">2, 3...</h3>
         <h1 class="mabuhay-text">Mabuhay!</h1>
-        <a class="create-button" href="/compose">Create Post</a>
+        <a class="create-button" href="/compose" onclick="goToCreate()">Create Post</a>
     </div>
     <img class="col-lg-8 col-sm-12 home-img" src="images/BINI-Group1.jpg" alt="">
 </div>
 
-<div class="music&perf">
-    <h2 class="music-text">Music</h2>
+
+<!-- Blog Post Categories Preview -->
+
+<div id="music" class="music d-flex flex-column align-items-center justify-content-center">
+    <h1 class="category-text mt-5">Music & Awards</h1>
+    <div class="blogPosts-container d-flex flex-wrap justify-content-center align-items-center">
+        <% if (musicPosts.length === 0) { %>
+            <h6 class="mt-3" style="color: rgb(110, 110, 110);">No Posts Yet</h6>
+        <% } %>
+        <% musicPosts.forEach(post => { %>
+          <div class="col-lg-4 col-md-6 col-sm-12 col-12 blogPost">
+            <a href="/posts/music/<%= post.id %>" style="text-decoration: none; color: black;">
+              <div class="blogPost-content">
+                <!-- Optional image preview -->
+                <% const imgMatch = post.content.match(/<img[^>]*src="([^"]*)"/); %>
+                <% if (imgMatch) { %>
+                  <img src="<%= imgMatch[1] %>" alt="preview" style="width: 100%; max-height: 300px; object-fit: cover; border-radius: 8px;">
+                <% } %>
+                <h4 class="mt-3"><%= post.title %></h4>
+                <p class="mb-0"><%= post.content.replace(/<[^>]+>/g, '').substring(0, 100) %>...</p>
+              </div>
+            </a>
+          </div>
+          
+        <% }) %>
+    </div>
+</div>
+
+<div id="performances" class="performances d-flex flex-column align-items-center justify-content-center">
+    <h1 class="category-text mt-5">Performances</h1>
+    <div class="blogPosts-container d-flex flex-wrap justify-content-around align-items-center">
+        <% if (perfPosts.length === 0) { %>
+            <h6 class="mt-3" style="color: rgb(110, 110, 110);">No Posts Yet</h6>
+        <% } %>
+        <% perfPosts.forEach(post => { %>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-12 blogPost">
+              <a href="/posts/performances/<%= post.id %>" style="text-decoration: none; color: black;">
+                <div class="blogPost-content">
+                  <!-- Optional image preview -->
+                  <% const imgMatch = post.content.match(/<img[^>]*src="([^"]*)"/); %>
+                  <% if (imgMatch) { %>
+                    <img src="<%= imgMatch[1] %>" alt="preview" style="width: 100%; max-height: 270px; object-fit: cover; border-radius: 8px;">
+                  <% } %>
+                  <h4 class="mt-3"><%= post.title %></h4>
+                  <p class="mb-0"><%= post.content.replace(/<[^>]+>/g, '').substring(0, 100) %>...</p>
+                </div>
+              </a>
+            </div>
+          <% }) %>
+    </div>
+</div>
+
+<div id="fashion" class="fashionConcepts d-flex flex-column align-items-center justify-content-center">
+    <h1 class="category-text mt-5">Fashion & Concepts</h1>
+    <div class="blogPosts-container d-flex flex-wrap justify-content-around align-items-center">
+        <% if (fashionPosts.length === 0) { %>
+            <h6 class="mt-3" style="color: rgb(110, 110, 110);">No Posts Yet</h6>
+        <% } %>
+        <% fashionPosts.forEach(post => { %>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-12 blogPost">
+              <a href="/posts/fashion/<%= post.id %>" style="text-decoration: none; color: black;">
+                <div class="blogPost-content">
+                  <!-- Optional image preview -->
+                  <% const imgMatch = post.content.match(/<img[^>]*src="([^"]*)"/); %>
+                  <% if (imgMatch) { %>
+                    <img src="<%= imgMatch[1] %>" alt="preview" style="width: 100%; max-height: 270px; object-fit: cover; border-radius: 8px;">
+                  <% } %>
+                  <h4 class="mt-3"><%= post.title %></h4>
+                  <p><%= post.content.replace(/<[^>]+>/g, '').substring(0, 100) %>...</p>
+                </div>
+              </a>
+            </div>
+          <% }) %>
+    </div>
+</div>
+
+<div id="biniPlus" class="biniPlus d-flex flex-column align-items-center justify-content-center mb-5">
+    <h1 class="category-text mt-5">BINI+</h1>
+    <h5 style="color: #00ccd6">BINI Randoms: Unfiltered, uncensored, unapologetically BINI.</h5>
+    <div class="blogPosts-container d-flex flex-wrap justify-content-around align-items-center">
+        <% if (biniPlusPosts.length === 0) { %>
+            <h6 class="mt-3" style="color: rgb(110, 110, 110);">No Posts Yet</h6>
+        <% } %>
+        <% biniPlusPosts.forEach(post => { %>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-12 blogPost">
+              <a href="/posts/biniPlus/<%= post.id %>" style="text-decoration: none; color: black;">
+                <div class="blogPost-content">
+                  <!-- Optional image preview -->
+                  <% const imgMatch = post.content.match(/<img[^>]*src="([^"]*)"/); %>
+                  <% if (imgMatch) { %>
+                    <img src="<%= imgMatch[1] %>" alt="preview" style="width: 100%; max-height: 300px; object-fit: cover; border-radius: 8px;">
+                  <% } %>
+                  <h4 class="mt-3"><%= post.title %></h4>
+                  <p><%= post.content.replace(/<[^>]+>/g, '').substring(0, 100) %>...</p>
+                </div>
+              </a>
+            </div>
+          <% }) %>
+    </div>
 </div>
 
 <%- include("partials/footer.ejs") %>

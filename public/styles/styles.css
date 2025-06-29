@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lavishly+Yours&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
 .tangerine-regular {
     font-family: "Tangerine", cursive;
@@ -19,7 +19,15 @@ font-style: normal;
     position: sticky !important;
     top: 0;
 }
-  
+
+.post-logo-button {
+    position: fixed !important;
+    top: 0;
+    width: 100% !important;
+    display: flex;
+    justify-content: center;
+    background-color: #f1ffff;
+}
 
 .nav-bar {
     background-color: #4ddde0;
@@ -74,20 +82,111 @@ font-style: normal;
     width: 100%;
 }
 
-.music-text {
-    font-family: "Lavishly Yours", cursive;
+.music, .performances, .fashionConcepts, .biniPlus {
+    background-color: #f5f6fa;
+}
+.category-text {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: #ff6f91;
 }
 
+.blogPosts-container {
+    width: 100%;
+}
+
+.blogPost-content {
+    margin: 15px;
+    background-color: #b0f2f3;
+    min-height: 450px;
+    max-height: fit-content;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+
+.blogPost-content:hover {
+    border: 2px solid #5bd1d7;
+    background-color: #eed0ec;
+    margin: 13px;
+    cursor: pointer;
+}
+
+.testPost {
+    background-image: url('/images/post-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.full-post-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 70px;
+}
+
+.full-post {
+    width: 50%;
+}
+
+.post-content img {
+    width: 100%;     
+    height: auto;        
+    border-radius: 8px;
+    display: block;
+    margin: 1rem auto;
+}
+
+.post-title {
+    text-align: center;
+}
+
+.backToHome {
+    padding: 5px 10px;
+    background-color: #892fff;
+    color: #ffff;
+    text-decoration: none;
+}
+
+.backToHome:hover {
+    background-color: #4bfff6;
+    color: #4f07ad;
+}
 
 @media (min-width: 992px) and (max-width: 1200px) {
     .mabuhay-text {
         font-size: 4em;
+    }
+
+    .full-post {
+        width: 70%;
+    }
+}
+
+@media (min-width: 451px) and (max-width: 991px) {
+    .full-post {
+        width: 75%;
     }
 }
 
 @media (max-width: 450px) {
     .mabuhay-text {
         font-size: 3em;
+    }
+
+    #next, #cancel {
+        font-size: 13px;
+        width: 70px !important;
+        height: 40px;
+        padding: 5px 15px !important;
+    }
+
+    .full-post {
+        width: 80%;
     }
 }
 
@@ -131,8 +230,8 @@ font-style: normal;
     background-color: #e8fffdef ;
     border: 3px solid #2b1b33;
     border-radius: 15px;
-    padding: 40px 30px;
-    padding-top: 30px;
+    padding: 20px 30px;
+    padding-top: 20px;
     width: 100%;
 }
 
@@ -174,9 +273,9 @@ font-style: normal;
 }
 
 #cancel {
-    width: 125px;
+    width: 115px;
     height: 40px;
-    padding: 5px 35px;
+    padding: 5px 30px;
     border-radius: 8px;
     border: 1px solid rgb(251, 100, 100);
     background-color: #cefffd;
@@ -184,9 +283,9 @@ font-style: normal;
 }
 
 #next {
-    width: 125px;
+    width: 115px;
     height: 40px;
-    padding: 5px 35px;
+    padding: 5px 30px;
     border-radius: 8px;
     border: none;
     background-color: #4bfff6;
@@ -210,27 +309,27 @@ font-style: normal;
 }
 
 .upload-btn {
-    width: 125px;
-    height: 40px;
-    padding: 5px 35px;
+    width: 120px;
+    height: 35px;
+    padding: 3px 25px;
     border-radius: 8px;
     border: none;
     background-color: #ac6cff;
     color: #ffff;
     font-weight: bold;
-    margin-top: 35px;
+    margin-top: 15px;
 }
 
 .back-btn {
-    width: 125px;
-    height: 40px;
-    padding: 5px 35px;
+    width: 120px;
+    height: 35px;
+    padding: 3px 25px;
     border-radius: 8px;
     border: none;
     background-color: #ff5c82;
     color: #ffff;
     font-weight: bold;
-    margin-top: 35px;
+    margin-top: 15px;
 }
 
 .upload-btn:hover {
