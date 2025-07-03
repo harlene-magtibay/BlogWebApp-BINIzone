@@ -13,11 +13,44 @@
     <img class="col-lg-8 col-sm-12 home-img" src="images/BINI-Group1.jpg" alt="">
 </div>
 
+<div id="biniverse" class="biniverse-preview d-flex flex-column align-items-center justify-content-center">
+  <div class="d-flex justify-content-center align-items-center mb-4">
+    <img src="/images/TealBiniFlower.png" alt="bini flower logo" style="width: 2.2rem;">
+    <h1 class="category-text mx-2 mb-0">BINIzone: Enter the BINIVERSE</h1>
+    <img src="/images/TealBiniFlower.png" alt="bini flower logo" style="width: 2.2rem;">
+  </div>
+
+   <div class="row">
+    <div class="col-xl-6 col-lg-12 col-md-12 text-center d-flex justify-content-center align-items-center">
+      <img src="/images/bini-biniverse.jpg" alt="biniverse" class="biniverse-img" style="max-width: 100%; height: auto;">
+    </div>
+    <div class="col-xl-6 col-lg-12 col-md-12 d-flex flex-column justify-content-center align-items-center">
+      <p class="bloom-desc mx-4 mt-3" style="max-width: 800px; text-align: justify;">
+        BINI is a modern P-Pop girl group composed of eight powerful, passionate, and purpose-driven young women—Aiah, Colet, Maloi, Gwen, Stacey, Mikha, Jhoanna, and Sheena—who are redefining what it means to be a Filipina in the global pop scene. Formed under ABS-CBN’s Star Hunt Academy, BINI officially debuted in 2021 and has since become a symbol of empowerment, excellence, and unity through music and art.
+      </p>
+      <p class="bloom-desc mx-4 mt-3" style="max-width: 800px; text-align: justify;">
+        Their name, derived from “binibini” (a Filipino term for young lady), reflects their mission to embody grace, strength, and authenticity. From vocal harmonies and synchronized choreography to bold fashion statements and cultural pride, BINI continuously blooms in every stage they grace. With viral hits like “Pantropiko” and “Karera”, international features, and sold-out concerts, the group proves that their growth is just beginning.
+      </p>
+    </div>
+   </div>
+  
+  <h5 class="bloom-tagline text-center mt-5 mb-4" style="color: #ff6f91;">
+    Want to know who they are — beyond the stage?
+  </h5>
+  <a href="/biniverse">
+    <button class="unfold-btn px-4 py-2">Step Inside the Biniverse🌸</button>
+  </a>
+</div>
 
 <!-- Blog Post Categories Preview -->
+<div class="blogPosts-titleContainer d-flex justify-content-center align-items-center">
+  <img src="/images/TealBiniFlower.png" alt="bini flower logo" style="width: 2rem;">
+  <h5 class="blogPosts-title mx-2">Blog Posts</h5>
+  <img src="/images/TealBiniFlower.png" alt="bini flower logo" style="width: 2rem;">
+</div>
 
 <div id="music" class="music d-flex flex-column align-items-center justify-content-center">
-    <h1 class="category-text mt-5">Music & Awards</h1>
+    <h1 class="category-text home-category mt-5"><a href="/music" style="text-decoration: none; color: inherit;">Music & Awards</a></h1>
     <div class="blogPosts-container d-flex flex-wrap justify-content-center align-items-center">
         <% if (musicPosts.length === 0) { %>
             <h6 class="mt-3" style="color: rgb(110, 110, 110);">No Posts Yet</h6>
@@ -42,7 +75,7 @@
 </div>
 
 <div id="performances" class="performances d-flex flex-column align-items-center justify-content-center">
-    <h1 class="category-text mt-5">Performances</h1>
+    <h1 class="category-text home-category mt-5"><a href="/performances" style="text-decoration: none; color: inherit;">Performances</a></h1>
     <div class="blogPosts-container d-flex flex-wrap justify-content-around align-items-center">
         <% if (perfPosts.length === 0) { %>
             <h6 class="mt-3" style="color: rgb(110, 110, 110);">No Posts Yet</h6>
@@ -66,7 +99,7 @@
 </div>
 
 <div id="fashion" class="fashionConcepts d-flex flex-column align-items-center justify-content-center">
-    <h1 class="category-text mt-5">Fashion & Concepts</h1>
+    <h1 class="category-text home-category mt-5"><a href="/fashion" style="text-decoration: none; color: inherit;">Fashion & Concepts</a></h1>
     <div class="blogPosts-container d-flex flex-wrap justify-content-around align-items-center">
         <% if (fashionPosts.length === 0) { %>
             <h6 class="mt-3" style="color: rgb(110, 110, 110);">No Posts Yet</h6>
@@ -89,9 +122,9 @@
     </div>
 </div>
 
-<div id="biniPlus" class="biniPlus d-flex flex-column align-items-center justify-content-center mb-5">
-    <h1 class="category-text mt-5">BINI+</h1>
-    <h5 style="color: #00ccd6">BINI Randoms: Unfiltered, uncensored, unapologetically BINI.</h5>
+<div id="biniPlus" class="biniPlus d-flex flex-column align-items-center justify-content-center pb-5">
+    <h1 class="category-text home-category mt-5"><a href="/biniPlus" style="text-decoration: none; color: inherit;">BINI+</a></h1>
+    <h5 style="color: #00ccd6; text-align: center;">BINI Randoms: Unfiltered, uncensored, unapologetically BINI.</h5>
     <div class="blogPosts-container d-flex flex-wrap justify-content-around align-items-center">
         <% if (biniPlusPosts.length === 0) { %>
             <h6 class="mt-3" style="color: rgb(110, 110, 110);">No Posts Yet</h6>
@@ -113,5 +146,38 @@
           <% }) %>
     </div>
 </div>
+
+
+
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const sections = document.querySelectorAll("div[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    function onScroll() {
+      let scrollY = window.scrollY;
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150; // Adjust based on navbar height
+        const sectionHeight = section.offsetHeight;
+        const id = section.getAttribute("id");
+
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          navLinks.forEach(link => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `/#${id}`) {
+              link.classList.add("active");
+            }
+          });
+        }
+      });
+    }
+
+    window.addEventListener("scroll", onScroll);
+  });
+</script>
 
 <%- include("partials/footer.ejs") %>

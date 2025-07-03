@@ -1,0 +1,110 @@
+<%- include("partials/subpage-header.ejs") %>
+
+<body style="width: 100%;">
+    <div class="biniverse-banner d-flex flex-column justify-content-center align-items-center" style="margin-top: 60px;">
+        <h1 class="biniverse-title">BINIzone: Enter the BINIVERSE</h1>
+        <!-- Intro section -->
+        <div class="flip-container mb-4 mx-auto">
+            <div class="flipper" id="flipper">
+              <!-- Front: Play Button -->
+              <div class="front d-flex justify-content-center align-items-center">
+                <img id="playIntroBtn" style="width: 65px;" src="/images/play-icon.png" alt="play icon">
+              </div>
+          
+              <!-- Back: Intro Text -->
+              <div class="back d-flex justify-content-center align-items-center">
+                <p id="introText" class="fw-bold">
+                    2, 3 — Mabuhay! We are BNI!
+                </p>
+              </div>
+            </div>
+          </div>
+    
+        <!-- audio file -->
+         <audio id="biniAudio" src="media/bini-intro.mp3" preload="auto"></audio>
+    </div>
+    
+    <section class="group-intro text-center px-5">
+      <h2 id="meetBini" class="mb-3">Meet BINI</h2>
+      <div style="width: 50%; margin: auto;">
+        <p class="lead">
+            Step into the world of BINI — a girl group reshaping the sound, style, and spirit of modern P-Pop. Composed of eight talented young women, BINI is more than just synchronized moves and chart-topping hits; they are a symbol of empowerment, unity, and the blossoming of the modern Filipina.
+          </p>
+          <p class="lead">
+            From their humble beginnings as trainees under Star Hunt Academy to becoming trailblazers of the new P-Pop era, BINI has carved their name into the hearts of BLOOMs across the country and beyond. Their music celebrates confidence and girl power, while their visuals, concepts, and performances continuously raise the bar for what it means to be an artist in this generation.
+          </p>
+          <p class="lead">
+            Each member brings her own charm, story, and strength — and together, they form a powerful force that stands for dreams, discipline, and sisterhood. Whether you’re just starting to follow them or have been with them since day one, this page is your all-access pass to who they are, where they’ve been, and what makes them BINI.
+          </p>
+          <p class="lead">
+            Welcome to the BINIVERSE — where passion meets purpose, and eight stars shine as one.
+          </p>
+      </div>
+    </section>
+    
+    <section class="members-section container mt-5">
+        <h2 class="text-center mb-4">Meet the Members</h2>
+        <div class="row justify-content-center">
+            <% const members = [
+            { name: "Aiah", role: "Visual, Main Rapper, Sub-Vocalist", birthday: "January 27, 2001", emoji: "/images/repAnimal/dog.png", color:"glacier-blue", img: "/images/members/aiah.jpg" },
+            { name: "Colet", role: "Main Vocalist, Lead Dancer, Lead Rapper", birthday: "September 14, 2001", emoji: "/images/repAnimal/wolf.png", color:"lime-green", img: "/images/members/colet.jpg" },
+            { name: "Maloi", role: "Main Vocalist", birthday: "May 27, 2002", emoji: "/images/repAnimal/panda.png", color:"mikado-yellow", img: "/images/members/maloi.jpg" },
+            { name: "Gwen", role: "Lead Vocalist, Lead Rapper", birthday: "June 19, 2003", emoji: "/images/repAnimal/koala.png", color:"dusty-orange", img: "/images/members/gwen.jpg" },
+            { name: "Stacey", role: "Main Rapper, Lead Dancer, Sub-Vocalist", birthday: "July 13, 2003", emoji: "/images/repAnimal/cat.png", color:"warm-pink", img: "/images/members/stacey.jpg" },
+            { name: "Mikha", role: "Main Rapper, Lead Dancer, Visual", birthday: "November 8, 2003", emoji: "/images/repAnimal/fox.png", color:"lava-red", img: "/images/members/mikha.jpg" },
+            { name: "Jhoanna", role: "Leader, Lead Vocalist, Lean Rapper", birthday: "January 26, 2004", emoji: "/images/repAnimal/chick.png", color:"peacock-blue", img: "/images/members/jhoanna.jpg" },
+            { name: "Sheena", role: "Main Dancer, Sub-Vocalist", birthday: "May 9, 2004", emoji: "/images/repAnimal/rabbit.png", color:"plum-purple", img: "/images/members/sheena.jpg" }
+            ]; %>
+    
+            <% members.forEach(member => { %>
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card member-card p-3 text-center">
+                <img data-border="<%= member.color %>" style="height: auto;" src="<%= member.img %>" alt="<%= member.name %>" class="member-img mb-3">
+                <div class="d-flex justify-content-center">
+                    <h4 class="mb-0"><%= member.name %></h4>
+                    <img class="ms-2" style="height: 28px; width: auto;" src="<%= member.emoji %>" alt="<%= member.name %> representative animal">
+                </div>
+                <p class="text-muted mb-0"><%= member.role %></p>
+                <p class="mb-0">🎂 <%= member.birthday %></p>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </section>
+    
+    <div class="d-flex justify-content-center my-5">
+        <a class="backToHome" href="/#<%= category %>">Back to Home</a>
+    </div>
+</body>
+
+<script>
+    const playBtn = document.getElementById('playIntroBtn');
+    const flipper = document.querySelector('.flip-container');
+    const audio = document.getElementById('biniAudio');
+    const meetBiniSection = document.getElementById('meetBini');
+  
+    playBtn.addEventListener('click', () => {
+      audio.play().then(() => {
+        flipper.classList.add('flipped');
+      }).catch(err => {
+        console.error("Autoplay error:", err);
+        alert("Please allow audio playback in your browser.");
+      });
+    });
+  
+    audio.addEventListener('ended', () => {
+      // Scroll smoothly to the Meet BINI section after the intro finishes
+      meetBiniSection.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    audio.addEventListener('ended', () => {
+    setTimeout(() => {
+        meetBiniSection.scrollIntoView({ behavior: 'smooth' });
+    }, 1500); // Delay in ms
+    });
+</script>
+  
+  
+  
+
+<%- include("partials/footer.ejs") %>
