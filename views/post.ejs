@@ -4,6 +4,38 @@
   <div class="post-logo-button">
     <a class="navbar-brand py-2" href="/"><img src="/images/white-BINIzone.png" alt="" style="height: 48px; width: auto;"></a>
   </div>
+
+  <div class="edit-delete-buttons">
+    <a href="/edit/<%= category %>/<%= post.id %>" class="btn" style="background-color: #3ef389; color: #3b2745; width: 43px;">
+      <i class="bi bi-pencil-square"></i>
+    </a>
+    <!-- Trigger button -->
+    <button type="button" class="btn btn-danger me-5" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
+      <i class="bi bi-trash3-fill"></i>
+    </button>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+          <div class="modal-header">
+            <h5 class="modal-title w-100" id="confirmDeleteLabel">Delete This Post?</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            This action cannot be undone. Are you sure you want to delete this post?
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <form action="/delete/<%= category %>/<%= post.id %>" method="POST">
+              <button type="submit" class="btn btn-danger">Yes, Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+</div>
+
+  </div>
   <div class="full-post-container">
     <div class="full-post">
       <h1 class="post-title"><%= post.title %></h1>

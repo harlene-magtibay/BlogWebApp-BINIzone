@@ -161,7 +161,7 @@ app.get("/posts/:category/:id", (req, res) => {
 
   const post = array.find((p) => p.id == id);
   if (post) {
-    res.render("post.ejs", { post, category: category });
+    res.render("post.ejs", { post, category: category, id: id });
   } else {
     res.status(404).send("Post not found");
   }
@@ -231,6 +231,95 @@ app.get("/biniPlus", (req, res) => {
 app.get("/biniverse", (req, res) => {
   res.render("biniverse.ejs", {category: "biniverse" });
 });
+
+app.get("/edit/:category/:id", (req, res) => {
+  const { category } = req.params;
+  const id = Number(req.params.id); // <- This is the fix
+
+  let array;
+  if (category === "music") array = musicArray;
+  else if (category === "performances") array = perfArray;
+  else if (category === "fashion") array = fashionArray;
+  else if (category === "biniPlus") array = biniplusArray;
+
+  const post = array.find((p) => p.id === id); // now this should work!
+console.log(post.category);
+  if (post) {
+    res.render("edit.ejs", { post, category });
+  } else {
+    res.status(404).send("Post not found");
+  }
+});
+
+app.post("/edit/:category/:id", (req, res) => {
+  const { category, id } = req.params;
+  const { title, content, category: newCategory } = req.body; // 'category' is the updated value from the form
+
+  // Normalize
+  const currentCategory = category.toLowerCase();
+  const targetCategory = newCategory.toLowerCase();
+  const postId = parseInt(id);
+
+  // Map category to array
+  const categoryMap = {
+    music: musicArray,
+    performances: perfArray,
+    fashion: fashionArray,
+    biniplus: biniplusArray,
+  };
+
+  let currentArray = categoryMap[currentCategory];
+  let newArray = categoryMap[targetCategory];
+
+  if (!currentArray || !newArray)
+    return res.status(400).send("Invalid category");
+
+  // Find the post in the current category
+  const postIndex = currentArray.findIndex((p) => p.id === postId);
+  if (postIndex === -1) return res.status(404).send("Post not found");
+
+  const post = currentArray.splice(postIndex, 1)[0]; // remove from current category
+  post.title = title;
+  post.content = content;
+
+  // If category changed, update the post ID to avoid conflict
+  if (currentArray !== newArray) {
+    // assign a new ID (increment based on last ID in new category)
+    const newId =
+      newArray.length > 0 ? newArray[newArray.length - 1].id + 1 : 0;
+    post.id = newId;
+  }
+
+  newArray.push(post);
+
+  // Redirect to the updated post
+  res.redirect(`/posts/${targetCategory}/${post.id}`);
+});
+
+
+app.post("/delete/:category/:id", (req, res) => {
+  const { category, id } = req.params;
+  const postId = parseInt(id);
+
+  let array;
+  if (category === "music") array = musicArray;
+  else if (category === "performances") array = perfArray;
+  else if (category === "fashion") array = fashionArray;
+  else if (category === "biniplus") array = biniPlusArray;
+
+  const index = array.findIndex((p) => p.id === postId);
+
+  if (index !== -1) {
+    array.splice(index, 1);
+    res.redirect("/#" + category);
+  } else {
+    res.status(404).send("Post not found");
+  }
+});
+
+
+
+
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);

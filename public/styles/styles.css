@@ -149,6 +149,17 @@ body {
     background-attachment: fixed;
 }
 
+.edit-delete-buttons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 60px;
+  }
+  
+
 .full-post-container {
     display: flex;
     flex-direction: column;
