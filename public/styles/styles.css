@@ -141,6 +141,17 @@ body {
     cursor: pointer;
 }
 
+.arrow {
+    background-color: #ff6f9184; 
+    padding: 5px 10px; 
+    border-radius: 8px;
+}
+
+.arrow:hover {
+    cursor: pointer;
+    background-color: #ff6f91; 
+}
+
 .testPost {
     background-image: url('/images/post-bg.jpg');
     background-size: cover;
@@ -157,8 +168,18 @@ body {
     flex-direction: column;
     gap: 10px;
     margin-top: 60px;
-  }
+    margin-right: 15px;
+    margin-left: 50px;
+    z-index: 1;
+}
+
+.edit-btn:hover {
+ background-color: #0bff81 !important;
+}  
   
+.modal {
+    z-index: 3;
+}
 
 .full-post-container {
     display: flex;
@@ -166,6 +187,7 @@ body {
     align-items: center;
     justify-content: center;
     margin-top: 70px;
+    position: relative;
 }
 
 .full-post {
@@ -427,6 +449,34 @@ body {
     /* .biniverse-banner {
         background-size: contain;
     } */
+}
+
+@media (max-width: 768px) {
+    .edit-delete-buttons {
+      position: static;
+      flex-direction: row;
+      justify-content: center;
+      margin-bottom: 1rem;
+      margin-top: 70px;
+    }
+
+    .full-post-container {
+        margin-top: 0.5rem !important;
+    }
+  
+    .post-title {
+      text-align: center;
+      margin-top: 0.2rem;
+    }
+
+    .btn-dangerr {
+        margin-right: 0 !important;
+    }
+
+    .bi-trash3-fill, .bi-pencil-square {
+        text-align: end;
+    }
+
 }
 
 @media (max-width: 494px) {

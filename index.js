@@ -124,8 +124,7 @@ const biniplusArray = [
     <p>When Jhoanna and Stacey stepped into the Pinoy Big Brother house in April 2025 as celebrity houseguests, they brought more than their star power—they brought authenticity, warmth, and a whole lot of laughs to every corner of the Big Brother universe.</p>
     <p>Mixing genuine warmth with playful energy, they took on games, chores, and late-night chats like old friends—with BINI charm all the way. From synchronized giggles to impromptu dance-offs in the living room, they proved their bond extends far beyond the stage.</p>
     <p>Jhoanna also connected deeply with quieter housemates, spending moments in heartfelt conversation and offering advice drawn from her experience as BINI’s leader. Meanwhile, Stacey bounced between playful goofiness and genuine insight, balancing levity with meaningful presence.</p>
-    <p>For Blooms watching at home, watching Jhoanna and Stacey blend their bubbly personas into everyday life inside the house was a delight. They weren’t just celebrities dropping in—they were sisters, friends, teammates, and unforgettable personalities that fans will remember long after the confessional lights turned off. </p>
-    <p></p>`
+    <p>For Blooms watching at home, watching Jhoanna and Stacey blend their bubbly personas into everyday life inside the house was a delight. They weren’t just celebrities dropping in—they were sisters, friends, teammates, and unforgettable personalities that fans will remember long after the confessional lights turned off. </p>`
   ),
 ];
 
@@ -235,7 +234,7 @@ app.get("/biniverse", (req, res) => {
 app.get("/edit/:category/:id", (req, res) => {
   const { category } = req.params;
   const id = Number(req.params.id); // <- This is the fix
-
+console.log("Category:", category, "ID:", id);
   let array;
   if (category === "music") array = musicArray;
   else if (category === "performances") array = perfArray;
@@ -243,7 +242,7 @@ app.get("/edit/:category/:id", (req, res) => {
   else if (category === "biniPlus") array = biniplusArray;
 
   const post = array.find((p) => p.id === id); // now this should work!
-console.log(post.category);
+
   if (post) {
     res.render("edit.ejs", { post, category });
   } else {
@@ -254,28 +253,43 @@ console.log(post.category);
 app.post("/edit/:category/:id", (req, res) => {
   const { category, id } = req.params;
   const { title, content, category: newCategory } = req.body; // 'category' is the updated value from the form
-
+console.log("Edit request for Category:", category, "ID:", id, "New Category:", newCategory, "New Title:", title, "New Content:", content);
   // Normalize
-  const currentCategory = category.toLowerCase();
-  const targetCategory = newCategory.toLowerCase();
+  let currentCategory = category.toLowerCase();
+  let targetCategory = newCategory.toLowerCase();
   const postId = parseInt(id);
+console.log("before Current Category:", currentCategory, "beforeTarget Category:", targetCategory, "Post ID:", postId);
+  if (targetCategory === "fashion & concepts") {
+    targetCategory = "fashion";
+  } else if (targetCategory === "bini+") {
+    targetCategory = "biniPlus";
+  }
+  if (currentCategory === "biniplus") {
+    currentCategory = "biniPlus";
+  } else if (currentCategory === "fashion & concepts") {
+    currentCategory = "fashion";
+  }
+
+console.log("Current Category:", currentCategory, "Target Category:", targetCategory, "Post ID:", postId);
 
   // Map category to array
   const categoryMap = {
     music: musicArray,
     performances: perfArray,
     fashion: fashionArray,
-    biniplus: biniplusArray,
+    biniPlus: biniplusArray,
   };
 
   let currentArray = categoryMap[currentCategory];
   let newArray = categoryMap[targetCategory];
+console.log("Current Array:", currentArray, "New Array:", newArray);
 
   if (!currentArray || !newArray)
     return res.status(400).send("Invalid category");
 
   // Find the post in the current category
   const postIndex = currentArray.findIndex((p) => p.id === postId);
+  console.log("Post Index:", postIndex);
   if (postIndex === -1) return res.status(404).send("Post not found");
 
   const post = currentArray.splice(postIndex, 1)[0]; // remove from current category
@@ -305,7 +319,7 @@ app.post("/delete/:category/:id", (req, res) => {
   if (category === "music") array = musicArray;
   else if (category === "performances") array = perfArray;
   else if (category === "fashion") array = fashionArray;
-  else if (category === "biniplus") array = biniPlusArray;
+  else if (category === "biniPlus") array = biniplusArray;
 
   const index = array.findIndex((p) => p.id === postId);
 

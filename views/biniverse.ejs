@@ -46,14 +46,14 @@
         <h2 class="text-center mb-4">Meet the Members</h2>
         <div class="row justify-content-center">
             <% const members = [
-            { name: "Aiah", role: "Visual, Main Rapper, Sub-Vocalist", birthday: "January 27, 2001", emoji: "/images/repAnimal/dog.png", color:"glacier-blue", img: "/images/members/aiah.jpg" },
-            { name: "Colet", role: "Main Vocalist, Lead Dancer, Lead Rapper", birthday: "September 14, 2001", emoji: "/images/repAnimal/wolf.png", color:"lime-green", img: "/images/members/colet.jpg" },
-            { name: "Maloi", role: "Main Vocalist", birthday: "May 27, 2002", emoji: "/images/repAnimal/panda.png", color:"mikado-yellow", img: "/images/members/maloi.jpg" },
-            { name: "Gwen", role: "Lead Vocalist, Lead Rapper", birthday: "June 19, 2003", emoji: "/images/repAnimal/koala.png", color:"dusty-orange", img: "/images/members/gwen.jpg" },
-            { name: "Stacey", role: "Main Rapper, Lead Dancer, Sub-Vocalist", birthday: "July 13, 2003", emoji: "/images/repAnimal/cat.png", color:"warm-pink", img: "/images/members/stacey.jpg" },
-            { name: "Mikha", role: "Main Rapper, Lead Dancer, Visual", birthday: "November 8, 2003", emoji: "/images/repAnimal/fox.png", color:"lava-red", img: "/images/members/mikha.jpg" },
-            { name: "Jhoanna", role: "Leader, Lead Vocalist, Lean Rapper", birthday: "January 26, 2004", emoji: "/images/repAnimal/chick.png", color:"peacock-blue", img: "/images/members/jhoanna.jpg" },
-            { name: "Sheena", role: "Main Dancer, Sub-Vocalist", birthday: "May 9, 2004", emoji: "/images/repAnimal/rabbit.png", color:"plum-purple", img: "/images/members/sheena.jpg" }
+            { name: "Aiah", role: "Visual, Main Rapper, Sub-Vocalist", birthday: "January 27, 2001", personality: "Half OA, Half Nonchalant", emoji: "/images/repAnimal/dog.png", color:"glacier-blue", img: "/images/members/aiah.jpg" },
+            { name: "Colet", role: "Main Vocalist, Lead Dancer, Lead Rapper", birthday: "September 14, 2001", personality: "Nonchalant", emoji: "/images/repAnimal/wolf.png", color:"lime-green", img: "/images/members/colet.jpg" },
+            { name: "Maloi", role: "Main Vocalist", birthday: "May 27, 2002", personality: "OA", emoji: "/images/repAnimal/panda.png", color:"mikado-yellow", img: "/images/members/maloi.jpg" },
+            { name: "Gwen", role: "Lead Vocalist, Lead Rapper", birthday: "June 19, 2003", personality: "Nonchalant", emoji: "/images/repAnimal/koala.png", color:"dusty-orange", img: "/images/members/gwen.jpg" },
+            { name: "Stacey", role: "Main Rapper, Lead Dancer, Sub-Vocalist", birthday: "July 13, 2003", personality: "OA", emoji: "/images/repAnimal/cat.png", color:"warm-pink", img: "/images/members/stacey.jpg" },
+            { name: "Mikha", role: "Main Rapper, Lead Dancer, Visual", birthday: "November 8, 2003", personality: "Nonchalant", emoji: "/images/repAnimal/fox.png", color:"lava-red", img: "/images/members/mikha.jpg" },
+            { name: "Jhoanna", role: "Leader, Lead Vocalist, Lead Rapper", birthday: "January 26, 2004", personality: "OA", emoji: "/images/repAnimal/chick.png", color:"peacock-blue", img: "/images/members/jhoanna.jpg" },
+            { name: "Sheena", role: "Main Dancer, Sub-Vocalist", birthday: "May 9, 2004", personality: "OA", emoji: "/images/repAnimal/rabbit.png", color:"plum-purple", img: "/images/members/sheena.jpg" }
             ]; %>
     
             <% members.forEach(member => { %>
@@ -66,6 +66,7 @@
                 </div>
                 <p class="text-muted mb-0"><%= member.role %></p>
                 <p class="mb-0">🎂 <%= member.birthday %></p>
+                <p class="mb-0"><%= member.personality %></p>
                 </div>
             </div>
             <% }) %>
