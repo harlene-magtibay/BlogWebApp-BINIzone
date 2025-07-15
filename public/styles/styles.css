@@ -227,8 +227,15 @@ iframe {
     color: #4f07ad;
 }
 
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 .category-container {
     margin-top: 90px;
+    flex: 1;
 }
 
 .biniverse-preview {

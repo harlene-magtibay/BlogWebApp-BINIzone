@@ -117,15 +117,15 @@ const fashionArray = [
   ),
 ];
 const biniplusArray = [
-  new BlogPost(
-    0,
-    "From Stage to Kuya’s House: BINI’s Jhoanna and Stacey Steal the Show",
-    `<p><img src="/images/jhocey-pbb.jpg"></p>
-    <p>When Jhoanna and Stacey stepped into the Pinoy Big Brother house in April 2025 as celebrity houseguests, they brought more than their star power—they brought authenticity, warmth, and a whole lot of laughs to every corner of the Big Brother universe.</p>
-    <p>Mixing genuine warmth with playful energy, they took on games, chores, and late-night chats like old friends—with BINI charm all the way. From synchronized giggles to impromptu dance-offs in the living room, they proved their bond extends far beyond the stage.</p>
-    <p>Jhoanna also connected deeply with quieter housemates, spending moments in heartfelt conversation and offering advice drawn from her experience as BINI’s leader. Meanwhile, Stacey bounced between playful goofiness and genuine insight, balancing levity with meaningful presence.</p>
-    <p>For Blooms watching at home, watching Jhoanna and Stacey blend their bubbly personas into everyday life inside the house was a delight. They weren’t just celebrities dropping in—they were sisters, friends, teammates, and unforgettable personalities that fans will remember long after the confessional lights turned off. </p>`
-  ),
+  // new BlogPost(
+  //   0,
+  //   "From Stage to Kuya’s House: BINI’s Jhoanna and Stacey Steal the Show",
+  //   `<p><img src="/images/jhocey-pbb.jpg"></p>
+  //   <p>When Jhoanna and Stacey stepped into the Pinoy Big Brother house in April 2025 as celebrity houseguests, they brought more than their star power—they brought authenticity, warmth, and a whole lot of laughs to every corner of the Big Brother universe.</p>
+  //   <p>Mixing genuine warmth with playful energy, they took on games, chores, and late-night chats like old friends—with BINI charm all the way. From synchronized giggles to impromptu dance-offs in the living room, they proved their bond extends far beyond the stage.</p>
+  //   <p>Jhoanna also connected deeply with quieter housemates, spending moments in heartfelt conversation and offering advice drawn from her experience as BINI’s leader. Meanwhile, Stacey bounced between playful goofiness and genuine insight, balancing levity with meaningful presence.</p>
+  //   <p>For Blooms watching at home, watching Jhoanna and Stacey blend their bubbly personas into everyday life inside the house was a delight. They weren’t just celebrities dropping in—they were sisters, friends, teammates, and unforgettable personalities that fans will remember long after the confessional lights turned off.</p>`
+  // ),
 ];
 
 app.get("/", (req, res) => {
