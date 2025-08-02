@@ -32,22 +32,16 @@ Follow these steps to run the project locally.
 2. Clone the Repository
 3. Install Dependencies:
      npm install
-4. Set Up the PostgreSQL Database
+4. Set Up the PostgreSQL Database.
    Create a PostgreSQL database named binizone at pgAdmin.
    Run the following query:
    
    CREATE TABLE blogposts(
-
      id SERIAL PRIMARY KEY,
-  
      post_date DATE NOT NULL DEFAULT CURRENT_DATE,
-  
      category VARCHAR(20) NOT NULL,
-  
      title VARCHAR(100) NOT NULL,
-  
      content TEXT NOT NULL
-
    );
 6. Run the app with nodemon:
    nodemon index.js
