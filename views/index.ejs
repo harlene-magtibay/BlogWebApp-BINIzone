@@ -49,7 +49,7 @@
   <img src="/images/TealBiniFlower.png" alt="bini flower logo" style="width: 2rem;">
 </div>
 
-<div id="music" class="music d-flex flex-column align-items-center justify-content-center">
+<div id="Music" class="music d-flex flex-column align-items-center justify-content-center">
     <h1 class="category-text home-category mt-5"><a href="/music" style="text-decoration: none; color: inherit;">Music & Awards</a></h1>
     <div class="blogPosts-container d-flex flex-wrap justify-content-center align-items-center">
         <% if (musicPosts.length === 0) { %>
@@ -57,7 +57,7 @@
         <% } %>
         <% musicPosts.forEach(post => { %>
           <div class="col-lg-4 col-md-6 col-sm-12 col-12 blogPost">
-            <a href="/posts/music/<%= post.id %>" style="text-decoration: none; color: black;">
+            <a href="/posts/Music/<%= post.id %>" style="text-decoration: none; color: black;">
               <div class="blogPost-content">
                 <!-- Optional image preview -->
                 <% const imgMatch = post.content.match(/<img[^>]*src="([^"]*)"/); %>
@@ -83,7 +83,7 @@
     </div>
 </div>
 
-<div id="performances" class="performances d-flex flex-column align-items-center justify-content-center">
+<div id="Performances" class="performances d-flex flex-column align-items-center justify-content-center">
     <h1 class="category-text home-category mt-5"><a href="/performances" style="text-decoration: none; color: inherit;">Performances</a></h1>
     <div class="blogPosts-container d-flex flex-wrap justify-content-center align-items-center">
         <% if (perfPosts.length === 0) { %>
@@ -91,7 +91,7 @@
         <% } %>
         <% perfPosts.forEach(post => { %>
             <div class="col-lg-4 col-md-6 col-sm-12 col-12 blogPost">
-              <a href="/posts/performances/<%= post.id %>" style="text-decoration: none; color: black;">
+              <a href="/posts/Performances/<%= post.id %>" style="text-decoration: none; color: black;">
                 <div class="blogPost-content">
                   <!-- Optional image preview -->
                   <% const imgMatch = post.content.match(/<img[^>]*src="([^"]*)"/); %>
@@ -116,7 +116,7 @@
     </div>
 </div>
 
-<div id="fashion" class="fashionConcepts d-flex flex-column align-items-center justify-content-center">
+<div id="Fashion & Concepts" class="fashionConcepts d-flex flex-column align-items-center justify-content-center">
     <h1 class="category-text home-category mt-5"><a href="/fashion" style="text-decoration: none; color: inherit;">Fashion & Concepts</a></h1>
     <div class="blogPosts-container d-flex flex-wrap justify-content-center align-items-center">
         <% if (fashionPosts.length === 0) { %>
@@ -124,7 +124,7 @@
         <% } %>
         <% fashionPosts.forEach(post => { %>
             <div class="col-lg-4 col-md-6 col-sm-12 col-12 blogPost">
-              <a href="/posts/fashion/<%= post.id %>" style="text-decoration: none; color: black;">
+              <a href="/posts/Fashion & Concepts/<%= post.id %>" style="text-decoration: none; color: black;">
                 <div class="blogPost-content">
                   <!-- Optional image preview -->
                   <% const imgMatch = post.content.match(/<img[^>]*src="([^"]*)"/); %>
@@ -149,7 +149,7 @@
     </div>
 </div>
 
-<div id="biniPlus" class="biniPlus d-flex flex-column align-items-center justify-content-center pb-5">
+<div id="BINI+" class="biniPlus d-flex flex-column align-items-center justify-content-center pb-5">
     <h1 class="category-text home-category mt-5"><a href="/biniPlus" style="text-decoration: none; color: inherit;">BINI+</a></h1>
     <h5 style="color: #00ccd6; text-align: center;">BINI Randoms: Unfiltered, uncensored, unapologetically BINI.</h5>
     <div class="blogPosts-container d-flex flex-wrap justify-content-center align-items-center">
@@ -158,7 +158,7 @@
         <% } %>
         <% biniPlusPosts.forEach(post => { %>
             <div class="col-lg-4 col-md-6 col-sm-12 col-12 blogPost">
-              <a href="/posts/biniPlus/<%= post.id %>" style="text-decoration: none; color: black;">
+              <a href="/posts/BINI+/<%= post.id %>" style="text-decoration: none; color: black;">
                 <div class="blogPost-content">
                   <!-- Optional image preview -->
                   <% const imgMatch = post.content.match(/<img[^>]*src="([^"]*)"/); %>
