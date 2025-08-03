@@ -20,7 +20,6 @@ Fans can explore blog posts across different categories such as music & awards, 
 1. Frontend: HTML, CSS, Bootstrap, EJS
 2. Backend: Node.js, Express.js
 3. Database: PostgreSQL
-4. Editor: Quill.js
 
 **Getting Started**
 Follow these steps to run the project locally.
@@ -34,15 +33,7 @@ Follow these steps to run the project locally.
      npm install
 4. Set Up the PostgreSQL Database.
    Create a PostgreSQL database named binizone at pgAdmin.
-   Run the following query:
-   
-   CREATE TABLE blogposts(
-     id SERIAL PRIMARY KEY,
-     post_date DATE NOT NULL DEFAULT CURRENT_DATE,
-     category VARCHAR(20) NOT NULL,
-     title VARCHAR(100) NOT NULL,
-     content TEXT NOT NULL
-   );
+   Paste and run the query from queries.sql file in the query tool.
 6. Run the app with nodemon:
    nodemon index.js
 7. Visit http://localhost:3000 in your browser.
