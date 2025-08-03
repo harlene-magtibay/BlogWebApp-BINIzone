@@ -1,0 +1,7 @@
+CREATE TABLE blogposts(
+    id SERIAL PRIMARY KEY,
+    post_date DATE NOT NULL DEFAULT CURRENT_DATE,
+    category VARCHAR(20) NOT NULL,
+    title VARCHAR(100) NOT NULL,
+    content TEXT NOT NULL
+);
