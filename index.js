@@ -3,18 +3,20 @@ import bodyParser from "body-parser";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import pg from "pg";
+import env from "dotenv";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 const port = 3000;
+env.config();
 
 const db = new pg.Client({
-  user: "postgres",
-  host: "localhost",
-  database: "binizone",
-  password: "123456",
-  port: 5432,
+  user: process.env.PG_USER,
+  host: process.env.PG_HOST,
+  database: process.env.PG_DATABASE,
+  password: process.env.PG_PASSWORD,
+  port: process.env.PG_PORT,
 });
 db.connect();
 
@@ -82,7 +84,6 @@ app.get("/posts/:category/:id", async (req, res) => {
 
   const post = array.find((p) => p.id == id);
   if (post) {
-    console.log(category);
     res.render("post.ejs", { post, category: category, id: id });
   } else {
     res.status(404).send("Post not found");
@@ -151,7 +152,6 @@ app.get("/edit/:category/:id", async (req, res) => {
   const id = Number(req.params.id); 
 
   const { musicArray, perfArray, fashionArray, biniplusArray } = await getPosts();
-console.log("Category:", category, "ID:", id);
   let array;
   if (category === "Music") array = musicArray;
   else if (category === "Performances") array = perfArray;
